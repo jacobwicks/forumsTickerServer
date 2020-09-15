@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import { makeEvent, makeNewClient, addClient, removeClient } from "../Events";
-import { LogPost } from "../types";
 
 export const routePath = "/cspam/";
 
@@ -14,11 +13,11 @@ const eventsHandler = async (
   res.setHeader("Connection", "keep-alive");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Content-Type", "text/event-stream");
-  // res.setHeader("Access-Control-Allow-Origin", "*");
-  // res.setHeader(
-  //   "Access-Control-Allow-Headers",
-  //   "Origin, X-Requested-With, Content-Type, Accept"
-  // );
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   res.flushHeaders();
 
   //OK!

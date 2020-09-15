@@ -18,14 +18,6 @@ const port = process.env.PORT || 3001;
 const app = createExpressApp();
 app.use(cors());
 app.get(routePath, eventRoute);
-app.get(
-  "/.well-known/acme-challenge/19YfKaHuPcqm5Wzb_9-YjpqhRtnDe8noD1b9lmGpyb8",
-  function (req, res) {
-    res.send(
-      "19YfKaHuPcqm5Wzb_9-YjpqhRtnDe8noD1b9lmGpyb8.2_5YCRNZcJANiLHZm3EY7fx_kYiLlGS6MNPlVoxYCrc"
-    );
-  }
-);
 
 const server = http.createServer();
 server
