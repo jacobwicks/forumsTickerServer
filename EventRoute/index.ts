@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { makeEvent, makeNewClient, addClient, removeClient } from "../Events";
+import { LogPost } from "../types";
 
 export const routePath = "/cspam/";
 
@@ -13,17 +14,20 @@ const eventsHandler = async (
   res.setHeader("Connection", "keep-alive");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+  // res.setHeader("Access-Control-Allow-Origin", "*");
+  // res.setHeader(
+  //   "Access-Control-Allow-Headers",
+  //   "Origin, X-Requested-With, Content-Type, Accept"
+  // );
   res.flushHeaders();
 
   //OK!
   //res.writeHead(200, headers);
 
-  const startEvent = makeEvent({ text: `Subscribed to cspam` });
+  const startEvent = {
+    body: "Subscribed to CSPAM",
+  };
+
   const stringData = JSON.stringify(startEvent);
 
   // After client opens connection send log event
@@ -52,7 +56,9 @@ export const eventRoute = async (
   next: NextFunction
 ) => {
   try {
-    eventsHandler(req, res, next);
+    //eventsHandler(req, res, next);
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.send;
   } catch (error) {
     res.status(500);
     next(error);
