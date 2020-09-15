@@ -1,8 +1,8 @@
 import * as http from "http";
 import createExpressApp from "./CreateExpressApp";
-import path from "path";
 import { eventRoute, routePath } from "./EventRoute";
 import sendLatestPostToTicker from "./SendPostsToSubscribers";
+import cors from "cors";
 
 //questions
 //how to deal with image posts
@@ -16,11 +16,7 @@ import sendLatestPostToTicker from "./SendPostsToSubscribers";
 const port = process.env.PORT || 3001;
 
 const app = createExpressApp();
-
-app.get("/", async (req, res) => {
-  res.sendFile(path.join(__dirname + "/index.html"));
-});
-
+app.use(cors());
 app.get(routePath, eventRoute);
 
 const server = http.createServer();
