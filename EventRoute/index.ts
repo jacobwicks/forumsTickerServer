@@ -12,6 +12,7 @@ const eventsHandler = async (
   // Mandatory headers and http status to keep connection open
   const headers = {
     "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, PUT, DELETE, OPTIONS",
     "Content-Type": "text/event-stream",
     Connection: "keep-alive",
     "Cache-Control": "no-cache",
