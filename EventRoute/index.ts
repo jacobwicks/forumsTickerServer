@@ -10,16 +10,14 @@ const eventsHandler = async (
   next: NextFunction
 ) => {
   // Mandatory headers and http status to keep connection open
-  const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, PUT, DELETE, OPTIONS",
-    "Content-Type": "text/event-stream",
-    Connection: "keep-alive",
-    "Cache-Control": "no-cache",
-  };
+  res.setHeader("Connection", "keep-alive");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.flushHeaders();
 
   //OK!
-  res.writeHead(200, headers);
+  //res.writeHead(200, headers);
 
   const startEvent = makeEvent({ text: `Subscribed to cspam` });
   const stringData = JSON.stringify(startEvent);
