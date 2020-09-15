@@ -11,6 +11,7 @@ const eventsHandler = async (
 ) => {
   // Mandatory headers and http status to keep connection open
   const headers = {
+    "Access-Control-Allow-Origin": "*",
     "Content-Type": "text/event-stream",
     Connection: "keep-alive",
     "Cache-Control": "no-cache",
@@ -26,7 +27,6 @@ const eventsHandler = async (
   const data = `data: ${stringData}\n\n`;
 
   res.write(data);
-  res.header("Access-Control-Allow-Origin", "*");
   // Generate an id based on timestamp and save res
   // object of client connection on clients list
   // Later we'll iterate it and send updates to each client
