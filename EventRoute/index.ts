@@ -18,7 +18,8 @@ const eventsHandler = async (
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
-  //res.flushHeaders();
+
+  res.flushHeaders();
 
   //OK!
   //res.writeHead(200, headers);
