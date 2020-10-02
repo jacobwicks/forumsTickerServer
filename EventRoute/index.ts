@@ -55,7 +55,7 @@ export const eventRoute = async (
   next: NextFunction
 ) => {
   try {
-    //eventsHandler(req, res, next);
+    eventsHandler(req, res, next);
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.send;
   } catch (error) {
