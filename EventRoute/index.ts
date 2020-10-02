@@ -18,7 +18,7 @@ const eventsHandler = async (
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
-  res.flushHeaders();
+  //res.flushHeaders();
 
   //OK!
   //res.writeHead(200, headers);
@@ -33,7 +33,6 @@ const eventsHandler = async (
   const data = `data: ${stringData}\n\n`;
 
   res.write(data);
-  res.header("Access-Control-Allow-Origin", "*");
   // Generate an id based on timestamp and save res
   // object of client connection on clients list
   // Later we'll iterate it and send updates to each client
